@@ -1,0 +1,28 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import Moment from 'react-moment';
+
+const ProfileEducation = ({
+  education: { school, degree, fieldofstudy, current, to, from, description },
+}) => {
+  return (
+    <div>
+      {!school ? '' : <h3>{school}</h3>}
+      <p>
+        <Moment format='YYYY/MM/DD'>{from}</Moment> -{' '}
+        {!to ? ' Now ' : <Moment format='YYYY/MM/DD'>{to}</Moment>}
+      </p>
+      <p>{!degree ? '' : <strong>Degree: {degree}</strong>}</p>
+      <p>
+        {!fieldofstudy ? '' : <strong>Field of Study: {fieldofstudy} </strong>}
+      </p>
+      <p>{!description ? '' : <strong>Description: {description} </strong>}</p>
+    </div>
+  );
+};
+
+ProfileEducation.propTypes = {
+  education: PropTypes.object.isRequired,
+};
+
+export default ProfileEducation;
